@@ -1,15 +1,15 @@
 Secure SSH with Google Authenticator Two-Factor Authentication on CentOS 7
-- install epel-release
+- install epel-release. command belloew:
 
 ```
 yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 ```
 
-- install google-authenticator
+- install google-authenticator, command bellow:
 ```
 yum install google-authenticator
 ```
-- jalankan google-authenticator di user yang akan disematkan 2 af
+- runing _google-authenticator_ in your user, command bellow:
 ```
 google-authenticator
 ```
@@ -44,7 +44,7 @@ By default, this limits attackers to no more than 3 login attempts every 30s.
 Do you want to enable rate-limiting? (y/n) y
 ```
 
-> buka link untuk melihat barcode untuk di scan
+> open link in your browser for the scan barcode authentication
 
 - seting pamd ssh
 
@@ -53,17 +53,16 @@ vim /etc/pam.d/sshd
 auth required pam_google_authenticator.so 
 ```
 
-setting sshd conf
+- setting sshd conf
+
 vim /etc/ssh/sshd
 ``` 
 ChallengeResponseAuthentication yes 
 ```
-
+- restart sshd/ssh in your server/local
+```
 systemctl restart sshd
-
-
-
-
+```
 
 
 
